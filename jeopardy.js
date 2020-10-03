@@ -31,9 +31,9 @@ const DEVREVIEW = true;
 async function getCategoryIds() {
     let catIds = [];
     for (let i = 0; i < NUM_CATEGORIES; i++) {
-        let response = await axios.get('http://jservice.io/api/random');
+        let response = await axios.get('https://jservice.io/api/random');
         let catId = response.data[0].category_id;
-        let catresponse = await axios.get(`http://jservice.io/api/category?id=${catId}`);
+        let catresponse = await axios.get(`https://jservice.io/api/category?id=${catId}`);
         let cluesList = catresponse.data.clues;
         let cleanClues = removebrokencluesets(cluesList);
         //if (DEVREVIEW && cluesList.length !== cleanClues.length) { debugger; }
@@ -92,7 +92,7 @@ function testViableQs(cluesList) {
  */
 //Done
 async function getCategory(catId) {
-    let response = await axios.get(`http://jservice.io/api/category?id=${catId}`)
+    let response = await axios.get(`https://jservice.io/api/category?id=${catId}`)
     let cluesArr = [];
     let allClues = response.data.clues
     let numAllClues = allClues.length
